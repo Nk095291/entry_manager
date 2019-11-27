@@ -4,7 +4,7 @@ const cons = require('consolidate');
 const viewRouter = require('./router/viewRoute');
 
 
-const port = 3000;
+const port = process.env.port || 3000;
 
 app.engine('html', cons.swig)
 app.set('view engine', 'html');
