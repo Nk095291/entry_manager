@@ -1,0 +1,28 @@
+{
+  "name": "entry_manager",
+  "version": "1.0.0",
+  "description": "An entry management software",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nk095291/entry_manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nk095291/entry_manager/issues"
+  },
+  "homepage": "https://github.com/Nk095291/entry_manager#readme",
+  "dependencies": {
+    "consolidate": "^0.15.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.12",
+    "nexmo": "^2.5.1",
+    "sendgrid": "^5.2.3",
+    "swig": "^1.4.2"
+  }
+}

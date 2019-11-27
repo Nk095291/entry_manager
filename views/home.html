@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/intlTelInput.min.css" />
+    <style>
+      body {
+        background-color: rgb(134, 77, 187);
+      }
+      .iti__flag {
+        background-image: url("/img/flags.png");
+      }
+
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        .iti__flag {
+          background-image: url("/img/flags@2x.png");
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div>
+        <h3>
+          <a
+            ><em
+              ><strong>ENTRERING?? please fill following details</strong></em
+            ></a
+          >
+        </h3>
+
+        <form
+          action="/entry"
+          name="entryForm"
+          onsubmit="return validateForm()"
+          method="post"
+        >
+          <div class="row">
+            <label for="name"> Your name</label>
+            <input type="text" name="name" id="name" />
+
+            <label for="email"> Your email</label>
+            <input type="email" name="email" id="email" />
+
+            <label for="phone"> Your phone no</label>
+            <input type="tel" name="phone" id="phone" />
+
+            <div class="row">
+              <input
+                type="submit"
+                class="button-primary three columns"
+                value="submit"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div>
+        <h3>
+          <a
+            ><em
+              ><strong>LEAVING?? please fill following details</strong></em
+            ></a
+          >
+        </h3>
+
+        <form action="/leave" method="post">
+          <label for="email"> Your email</label>
+          <input type="email" name="email" id="email" />
+
+          <div class="row">
+            <input
+              type="submit"
+              class="button-primary three columns"
+              value="submit"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script src="/js/intlTelInput.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/11.1.0/validator.min.js"></script>
+  <script>
+    var input = document.querySelector("#phone");
+    var iti = intlTelInput(input, {
+      initialCountry: "in",
+      preferredCountries: ["in"],
+      separateDialCode: true
+    });
+    updateCountryCode();
+    input.addEventListener("countrychange", function() {
+      updateCountryCode();
+    });
+    function updateCountryCode() {
+      let data = iti.getSelectedCountryData();
+      input.value = data.dialCode;
+    }
+
+    function validateForm() {
+      const [name, email, phone] = document.forms["entryForm"];
+      if (!name.value || !email.value || !phone.value) {
+        alert("none of the below field can be empty !!!, please fill them");
+        return false;
+      }
+      if (!validator.isAlpha(name.value.replace(/ +/g, ""))) {
+        alert("invalid name please re-enter name");
+        return false;
+      }
+      if (!validator.isEmail(email.value)) {
+        alert("invalid email please re-enter email");
+        return false;
+      }
+      if (!validator.isMobilePhone(phone.value)) {
+        alert("invalid phone no , please re-enter phone no");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</html>
