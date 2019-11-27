@@ -38,3 +38,4 @@ const visitor = new mongoose.Schema({
 const visitorModel = new mongoose.model('visitor', visitor);
 
 module.exports = visitorModel;
+console.log("mongoose works fine");

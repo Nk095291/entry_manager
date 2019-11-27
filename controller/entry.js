@@ -54,4 +54,6 @@ const entry = (req, res) => {
     }
 }
 
+console.log(" entry fine");
+
 module.exports = entry;

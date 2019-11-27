@@ -54,3 +54,4 @@ const leave = (req, res) => {
     }
 };
 module.exports = leave;
+console.log(" leave fine");

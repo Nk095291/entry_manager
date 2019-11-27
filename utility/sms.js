@@ -17,3 +17,5 @@ function sendSms(to, text) {
 }
 
 module.exports = sendSms;
+
+console.log(" sms fine");
