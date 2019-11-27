@@ -15,7 +15,7 @@ app.use('', viewRouter);
 
 
 app.listen(port, () => {
-    console.log("app is live on 3000");
+    console.log(`app is live on ${port}`);
 
 });
 
