@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     var panelOne = $('.form-panel.two').height(),
       panelTwo = $('.form-panel.two')[0].scrollHeight;
     $('.form').animate({
@@ -38,15 +39,4 @@ $(document).ready(function() {
         'height': panelOne
       }, 200);
     });
-
-
-    // $('button').on('click',function(){
-    //   // console.log();
-    //   $.post(
-    //     '/leave',()=>{
-    //       console.log("worked");
-    //     }
-    //   )
-  
-    // })
   });

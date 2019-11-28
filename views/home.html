@@ -5,7 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
+    <link rel="stylesheet" href="css/intlTelInput.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .iti__flag {
+          background-image: url("img/flags.png");
+        }
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+          .iti__flag {
+            background-image: url("img/flags@2x.png");
+          }
+        }
+      </style>
   </head>
   <body>
     <!-- Form-->
@@ -39,14 +50,13 @@
             </div>
           </form>
         </div>
-      </div>
-      
+      </div>      
       <div class="form-panel two">
         <div class="form-header">
           <h1>Host Details</h1>
         </div>
         <div class="form-content">
-          <form action="/updateHost" method="POST">
+          <form name="host-form" onsubmit="return validateFormHost()" action="/updateHost" method="POST">
             <div class="form-group">
               <label for="name">Name</label>
               <input
@@ -69,7 +79,7 @@
               <label for="phone">Phone</label>
               <input
                 type="tel"
-                id="phone"
+                id="phone1"
                 name="phone"
                 required="required"
               />
@@ -90,7 +100,7 @@
           <h1>Visitor Details</h1>
         </div>
         <div class="form-content">
-          <form action="\entry" method="POST">
+          <form name="visitor-form" onsubmit="return validateFormVisitor()" action="\entry" method="POST">
             <div class="form-group">
               <label for="name">Name</label>
               <input
@@ -104,7 +114,7 @@
               <label for="phone">Phone</label>
               <input
                 type="tel"
-                id="phone"
+                id="phone2"
                 name="phone"
                 required="required"
               />
@@ -124,5 +134,8 @@
     </div>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/11.1.0/validator.min.js"> </script>
+  <script src="/js/intlTelInput.min.js"></script>
+  <script src="js/validator.js"></script>
   <script src="js/script.js"></script>
 </html>

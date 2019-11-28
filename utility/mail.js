@@ -23,5 +23,6 @@ function sendMail(opt) {
     })
 }
 
+
 module.exports = sendMail;
 

@@ -3,8 +3,6 @@ const path = require('path')
 
 require('dotenv').config({ path: path.join(__dirname, '/../.env') });
 
-
-
 const DB = process.env.MONGODB;
 
 mongoose.connect(DB, {
@@ -32,10 +30,25 @@ const visitor = new mongoose.Schema({
     },
     checkOUT: {
         type: Date,
+    },
+    host_name:{
+        type:String,
+        required:true
+    },
+    host_address:{
+        type:String,
+        required:true
+    },
+    host_email:{
+        type:String,
+        required:true
+    },
+    host_phone:{
+        type:Number,
+        required:true
     }
 });
 
 const visitorModel = new mongoose.model('visitor', visitor);
 
 module.exports = visitorModel;
-console.log("mongoose works fine");

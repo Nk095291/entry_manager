@@ -12,4 +12,3 @@ function getTime(time) {
     return hour + " : " + minutes + clock + 'IST';
 }
 module.exports = getTime;
-console.log(" entdatery fine");

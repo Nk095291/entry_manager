@@ -1,5 +1,4 @@
 const Nexmo = require('nexmo');
-
 const path = require("path")
 
 require('dotenv').config({ path: path.join(__dirname, '/../.env') });
@@ -13,9 +12,7 @@ const nexmo = new Nexmo({
 const from = 'Nitin kumar';
 
 function sendSms(to, text) {
-  nexmo.message.sendSms(form, to, text);
+  nexmo.message.sendSms(from, to, text);
 }
 
 module.exports = sendSms;
-
-console.log(" sms fine");
