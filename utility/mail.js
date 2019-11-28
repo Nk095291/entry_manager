@@ -24,4 +24,4 @@ function sendMail(opt) {
 }
 
 module.exports = sendMail;
-console.log(" mail fine");
+
