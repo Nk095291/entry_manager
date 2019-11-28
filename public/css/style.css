@@ -5,6 +5,8 @@ html {
   
   body {
     background: linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
+    /* background-image: url('../img/welcome.png'); */
+    /* background-size: cover; */
     color: rgba(0, 0, 0, 0.6);
     font-family: "Roboto", sans-serif;
     font-size: 14px;
@@ -347,3 +349,5 @@ html {
   .alertButton:hover{
     background: #0da24e;
   }
+
+
