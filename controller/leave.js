@@ -12,7 +12,7 @@ async function leave_fun({ email }) {
         console.log(email);
         let visitor = await Visitor.findOne({ email });
         if (!visitor) {
-            throw "not in database"
+            return "404"
         }
         
 
@@ -61,24 +61,37 @@ async function leave_fun({ email }) {
         sendMail(mailOptions);
 
         sendSms(visitor.phone,msg);
-
+        let visitorName = visitor.name;
+       
         await Visitor.findOneAndDelete({ email });
-
+        return visitorName;
     } catch (err) {
-        console.log(err);
+  
         throw err;
     }
 }
 
 
-const leave = (req, res) => {
+const leave = async (req, res) => {
     try {
 
-        leave_fun(req.body);
-        res.render('leave');
+        let result =await leave_fun(req.body);
+        if(result === "404")
+           return res.render('message',{
+                one:`Sorry sir!!`,
+                two:`But you have to checkIn first to  CheckOut`
+            });
+        
+        res.render('message',{
+            one:`Thanks for your Time, Mr.${result}`,
+            two:`We will send you A Summary of this visit`
+        });
     } catch (err) {
-
-        res.render('error');
+        res.render('message',{
+            one:"OOPs!!!!",
+            two:`Something wrong happen!! Please try again`,
+            three:`Nitin Kumar will fix this porblem later`
+        });
     }
 };
 module.exports = leave;

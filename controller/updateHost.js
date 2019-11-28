@@ -22,10 +22,19 @@ function updateHost(req,res)
 {
     try{
         update(req.body);
-        res.render('hostUpdate');
+        res.render('message',{
+            one:`DONE!!!!`,
+            two:`Host information has been sucessfully updated`,
+            three:`everyone form now one will and visit MR. ${process.env.HOST_NAME}`
+            
+        });
     
     }catch(err){
-        res.render(error);
+        res.render('message',{
+            one:"OOPs!!!!",
+            two:`Something wrong happen!! Please try again`,
+            three:`Nitin Kumar will fix this porblem later`
+        });
     }
 
 }

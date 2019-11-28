@@ -23,6 +23,8 @@
     "mongoose": "^5.7.12",
     "nexmo": "^2.5.1",
     "nodemailer": "^6.3.1",
+    "pug": "^2.0.4",
+    "pug-cli": "^1.0.0-alpha6",
     "sendgrid": "^5.2.3",
     "swig": "^1.4.2",
     "validator": "^12.1.0"

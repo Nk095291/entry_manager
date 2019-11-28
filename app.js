@@ -1,13 +1,13 @@
 const express = require("express");
 const app = express();
 const cons = require('consolidate');
-const viewRouter = require('./router/viewRoute');
+const viewRouter = require('./router/viewRouter');
 
 
 const port = process.env.PORT || 3000;
 
-app.engine('html', cons.swig)
-app.set('view engine', 'html');
+
+app.set('view engine', 'pug')
 app.use(express.static("./public"));
 app.use(express.urlencoded({ extended: true }));
 

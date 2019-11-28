@@ -85,11 +85,21 @@ const entry = async (req, res) => {
         let result =await entry_fun(req.body);
     
         if(result==="already present") 
-            res.render('alreadyPresent');
+            res.render('message',{
+                one:`Sorry sir!!`,
+                two:`But you have to checkOut first to checkIn again`
+            });
         else
-            res.render('entry');
+            res.render('message',{
+                one:"Thanks for your Time",
+                two:`We are sending your information to MR.${process.env.HOST_NAME}`
+            });
     } catch (err) {
-        res.render('error');
+        res.render('message',{
+            one:"OOPs!!!!",
+            two:`Something wrong happen!! Please try again`,
+            three:`Nitin Kumar will fix this porblem later`
+        });
     }
 }
 
