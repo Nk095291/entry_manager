@@ -18,7 +18,9 @@ head
         h1 #{two}
       .form-header
         h1 #{three}
+      .form-group
+          button(onclick="backToHome()") Okay!
   script.
-    setTimeout(() => {
-    window.location = "/";
-    }, 3000);
+    function backToHome(){
+      window.location = "/";
+    };

@@ -1,5 +1,6 @@
 
 const path = require('path')
+const informDev = require('../utility/mailToDev');
 
 require('dotenv').config({ path: path.join(__dirname, '/../.env') });
 
@@ -30,6 +31,7 @@ function updateHost(req,res)
         });
     
     }catch(err){
+        informDev(err);
         res.render('message',{
             one:"OOPs!!!!",
             two:`Something wrong happen!! Please try again`,

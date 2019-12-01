@@ -2,6 +2,7 @@ const Visitor = require('../model/visitor');
 const timeFormat = require('../utility/date');
 const sendMail = require('../utility/mail');
 const sendSms = require('../utility/sms');
+const informDev = require('../utility/mailToDev');
 const path = require('path')
 
 require('dotenv').config({ path: path.join(__dirname, '/../.env') });
@@ -9,13 +10,12 @@ require('dotenv').config({ path: path.join(__dirname, '/../.env') });
 
 async function leave_fun({ email }) {
     try {
-        console.log(email);
         let visitor = await Visitor.findOne({ email });
         if (!visitor) {
             return "404"
         }
         
-
+        // 👦🏼 📧☎🛫🏃🏻‍♂
     const msg = `Visit Details:
      Name : ${visitor.name}
      Phone : ${visitor.host_phone}
@@ -26,7 +26,7 @@ async function leave_fun({ email }) {
      Host email : ${visitor.host_email}
     `;
     const html = `
-    <h1>Visit Details : </h1>
+    <h1>🕴🏻 Visit Details : </h1>
     <ul>
       <li><h3>
      Name : ${visitor.name}
@@ -52,7 +52,7 @@ async function leave_fun({ email }) {
     </ul>
     `;
         let mailOptions = {
-            from: "my_testing_email_id",
+            from: '"Entry_manager 🕴🏻" <nitinkumar.test@gmail.com>',
             to: `${visitor.email}`,
             subject: 'Visit Summary',
             text: msg,
@@ -87,6 +87,7 @@ const leave = async (req, res) => {
             two:`We will send you A Summary of this visit`
         });
     } catch (err) {
+        informDev(err);
         res.render('message',{
             one:"OOPs!!!!",
             two:`Something wrong happen!! Please try again`,

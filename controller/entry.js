@@ -2,6 +2,7 @@ const Visitor = require('../model/visitor');
 const sendMail = require('../utility/mail');
 const sendSms = require('../utility/sms')
 const path = require('path')
+const infom_dev = require('../utility/mailToDev');
 
 require('dotenv').config({ path: path.join(__dirname, '/../.env') });
 
@@ -9,7 +10,10 @@ require('dotenv').config({ path: path.join(__dirname, '/../.env') });
 
 async function entry_fun({ name, email, phone }) {
     try {
-
+        if(!process.env.HOST_NAME)
+        {
+            return 'host_not_present';
+        }
         let ispresend = await Visitor.findOne({ email });
         
         if(ispresend)
@@ -24,30 +28,24 @@ async function entry_fun({ name, email, phone }) {
         }
 
         const msg = `
-            Visitor Details:
+         Visitor Details:
         Name - ${name}
         Email - ${email}
         Phone - ${phone}
         `;
         const html = `
         <h1>
-        Visitor Details:      
+        🕴🏻Visitor Details:      
     </h1>
     <ul>
-      <li><h3>
-        Name - ${name}
-      </h3></li>
-      <li><h3>
-          Email - ${email}
-      </h3></li>
-      <li><h3>
-          Phone - ${phone}
-      </h3></li>
+      <li><h3>👱🏻‍Name - ${name}</h3></li>
+      <li><h3>📧Email - ${email}</h3></li>
+      <li><h3>📞Phone - ${phone}</h3></li>
     </ul>
     `
         console.log(process.env.HOST_EMAIL);
         let mailOptions = {
-            from: "my_testing_email_id",
+            from: '"Entry_manager 🕴🏻" <nitinkumar.test@gmail.com>',
             to: process.env.HOST_EMAIL,
             subject: 'Somebody Come To Visit You',
             text: msg,
@@ -89,12 +87,18 @@ const entry = async (req, res) => {
                 one:`Sorry sir!!`,
                 two:`But you have to checkOut first to checkIn again`
             });
+        else if(result == 'host_not_present')
+            res.render('message',{
+                one:`Sorry sir!!`,
+                two:`But you have to fill the details of the host first!!`
+            });
         else
             res.render('message',{
                 one:"Thanks for your Time",
                 two:`We are sending your information to MR.${process.env.HOST_NAME}`
             });
     } catch (err) {
+        infom_dev(err);
         res.render('message',{
             one:"OOPs!!!!",
             two:`Something wrong happen!! Please try again`,
