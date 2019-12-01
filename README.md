@@ -29,7 +29,7 @@ The app is live on this [link](http://entry-manager.herokuapp.com) .You can chec
 
   - cover almost every case like what is host info. is not provide visitor come or somebody try to check-out before even checking-in.
   - If any some error occur this application will show a error page and send the developer means me :neckbeard: an email about to error to solve the issue asap.
-  - user friendly UI :simple_smile:.
+  - user friendly UI.
   - country code dropdown with flags
   - mobile compatible
   - organised and clean code :dancers:
