@@ -1,5 +1,4 @@
 const sendMail = require('./mail');
-
   function sendMailToDev(err)
   {
     let info = {
@@ -9,6 +8,6 @@ const sendMail = require('./mail');
         text: `some error occured : ${err}`, // plain text body
         html: `<b>some error occured : ${err}</b>` // html body
       };
-          
+    sendMail(info);
   }
   module.exports = sendMailToDev;

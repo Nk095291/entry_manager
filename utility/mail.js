@@ -1,4 +1,3 @@
-
 const nodemailer = require("nodemailer");
 const path = require("path")
 
@@ -22,18 +21,6 @@ function sendMail(opt) {
             throw err;
     })
 }
-
-//                  testing            //
-// let info = {
-//     from: '"Fred Foo 🏂" <nitinkumar.test@gmail.com>', // sender address
-//     to: "nk095291@gmail.com", // list of receivers
-//     subject: "Hello ✔", // Subject line
-//     text: "Hello world?", // plain text body
-//     html: "<b>🏂Hello world?</b>" // html body
-//   };
-
-//   sendMail(info);
-
 
 module.exports = sendMail;
 

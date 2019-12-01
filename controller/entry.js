@@ -6,8 +6,6 @@ const infom_dev = require('../utility/mailToDev');
 
 require('dotenv').config({ path: path.join(__dirname, '/../.env') });
 
-
-
 async function entry_fun({ name, email, phone }) {
     try {
         if(!process.env.HOST_NAME)
@@ -81,7 +79,7 @@ async function entry_fun({ name, email, phone }) {
 const entry = async (req, res) => {
     try {
         let result =await entry_fun(req.body);
-    
+        
         if(result==="already present") 
             res.render('message',{
                 one:`Sorry sir!!`,
@@ -98,6 +96,7 @@ const entry = async (req, res) => {
                 two:`We are sending your information to MR.${process.env.HOST_NAME}`
             });
     } catch (err) {
+        // seding mail to the developer to fix the err
         infom_dev(err);
         res.render('message',{
             one:"OOPs!!!!",

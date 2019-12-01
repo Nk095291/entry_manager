@@ -1,4 +1,4 @@
-
+// function to convert time to a more readable format
 function getTime(time) {
     let hour = time.getHours();
     let minutes = time.getMinutes();

@@ -1,32 +1,20 @@
 
-var input = document.querySelector("#phone1");
+// --------  initialise the country code selector------------------
+var input = $(".phone")[0];
 var iti = intlTelInput(input, {
   initialCountry: "in",
   preferredCountries: ["in"],
   separateDialCode: true
 });
-let data = iti.getSelectedCountryData();
-input.value = data.dialCode;
-input.addEventListener("countrychange", function () {
-  let data = iti.getSelectedCountryData();
-  input.value = data.dialCode;
-});
 
-
-var input2 = document.querySelector("#phone2");
+var input2 = $(".phone")[1];
 var iti2 = intlTelInput(input2, {
   initialCountry: "in",
   preferredCountries: ["in"],
   separateDialCode: true
 });
-let data2 = iti2.getSelectedCountryData();
-input2.value = data2.dialCode;
-input2.addEventListener("countrychange", function () {
-  let data2 = iti2.getSelectedCountryData();
-  input2.value = data2.dialCode;
-});
 
-
+// ---------------- validation functions --------------------
 function check(name,email,phone)
 {
   try{
@@ -46,42 +34,29 @@ function check(name,email,phone)
       modal("invalid phone no , please re-enter phone no");
       return false;
     }
-    // console.log(phone.value.length)
-
-    if(phone.value.length<12)
-    {
-      modal('please correct phone no (did you add country code?)');
-      return false;
-    }
   }catch(err)
   {
     modal('fill the details correctly!!!');
-    console.log(err);
     return false;
   }
  
   return true;
 }
 
-
 function validateFormVisitor() {
   const [name, phone,email] = document.forms["visitor-form"];
-  return check(name,email,phone);
+  if( !check(name,email,phone) ) return false;
+  // adding country code before sending it to the server
+  phone.value = $(".iti__selected-dial-code")[1].innerHTML + phone.value;
 } 
 
 function validateFormHost() {
   const [name, email, phone,address] = document.forms["host-form"];
-  // console.log(address.value);
-  if( !address.value )
-  {
-    modal('please enter address');
-    return false;
-  }
-   return check(name,email,phone);
-   
+  if( !check(name,email,phone)) return false;
+    phone.value = $(".iti__selected-dial-code")[0].innerHTML + phone.value;   
 } 
 
-
+//------------------------ custom alert------------------------------------ 
 var modal = function(html)
 {
 

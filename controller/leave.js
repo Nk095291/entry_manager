@@ -14,8 +14,6 @@ async function leave_fun({ email }) {
         if (!visitor) {
             return "404"
         }
-        
-        // 👦🏼 📧☎🛫🏃🏻‍♂
     const msg = `Visit Details:
      Name : ${visitor.name}
      Phone : ${visitor.host_phone}
@@ -29,25 +27,25 @@ async function leave_fun({ email }) {
     <h1>🕴🏻 Visit Details : </h1>
     <ul>
       <li><h3>
-     Name : ${visitor.name}
+      👦Name : ${visitor.name}
       </h3></li>
       <li><h3>
-     Phone : ${visitor.host_phone}
+      ☎Host Phone : ${visitor.host_phone}
       </h3></li>
       <li><h3>
-     Check-in time : ${timeFormat(visitor.checkIn)}
+      🛫Check-in time : ${timeFormat(visitor.checkIn)}
       </h3></li>
       <li><h3>
-     Check-out time : ${timeFormat(new Date())}
+      🛫Check-out time : ${timeFormat(new Date())}
       </h3></li>
       <li><h3>
-     Host name : ${visitor.host_name}
+      👦Host name : ${visitor.host_name}
       </h3></li>
       <li><h3>
-     Address visited : ${visitor.host_address}
+      🏠Address visited : ${visitor.host_address}
       </h3></li>
       <li><h3>
-     Host email : ${visitor.host_email}
+      📧Host email : ${visitor.host_email}
       </h3></li>
     </ul>
     `;
